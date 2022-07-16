@@ -1,0 +1,79 @@
+@import './_Content.module'
+    
+@mixin sidebarButton
+    width: 12px
+    height: 12px
+    margin: 0 5px
+    cursor: pointer
+    border-radius: 50%
+    border: none
+@mixin headArea
+    display: flex
+    align-items: center
+    width: 100%
+    height: 100%
+    margin-bottom: 10px
+
+.tab
+    padding: 10px
+    overflow: hidden
+    width: 800px
+    height: 550px
+    background-color: #d1d1d1
+    display: grid
+    border-radius: 6px
+    gap: 10px
+    grid-template-areas: "shead chead" "sidebar content"
+    grid-template-rows: 40px 1fr
+    grid-template-columns: 130px 1fr
+    .sidebar
+        grid-area: 'sidebar'
+        .sidebar_head
+            grid-area: shead
+            @include headArea
+            .sidebar_button_close,
+            .sidebar_button_hide,
+            .sidebar_button_resize
+                @include sidebarButton
+            .sidebar_button_close
+                background-color: #ec6565
+            .sidebar_button_hide
+                background-color: #e6b11f
+            .sidebar_button_resize
+                background-color: #58b558
+        .sidebar_main
+            h5
+                color: #909090
+                font-size: 0.70rem
+                margin: 0
+                margin-left: 5px
+            ul
+                margin: 4px 0
+                padding-left: 4px
+                list-style: none
+                .favorite_item
+                    height: 100%
+                    display: flex
+                    align-items: flex-end
+                    padding: 7px 8px
+                    border-radius: 6px
+                    .favorite_item_icon
+                        transform: scale(1.25)
+                        color: #2880df
+                    .favorite_item_text
+                        cursor: default
+                        z-index: 2
+                        width: 100%
+                        padding-left: 8px
+                        font-size: 0.8rem
+                        color: #333333
+                        letter-spacing: 0.25px
+                    &.selected
+                        background-color: #bebebe
+    .content
+        grid-area: 'content'
+        .content_head
+            grid-area: chead
+            @include headArea
+        .content_main
+            width: inherit
