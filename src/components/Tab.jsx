@@ -11,12 +11,11 @@ const Tab = () => {
     const [currentSelected, setCurrentSelected] = useState('AirDrop')
 
     const selectListItem = (e) => {
-        console.log(e.target)
         const listItems = [...document.querySelectorAll('li.favorite_item')]
         listItems.forEach(listItem => listItem.classList.remove('selected'))
-        const clickedItem = listItems.find(item => item.id === e.target.parentElement.id)
+        const clickedItem = listItems.find(item => item.id === e.currentTarget.id)
         clickedItem.classList.add('selected')
-        setCurrentSelected(e.target.innerText)
+        setCurrentSelected(e.currentTarget.innerText)
     }
 
     return (
