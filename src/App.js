@@ -6,18 +6,22 @@ import { ImFinder } from 'react-icons/im'
 
 function App() {
   const [open, setOpen] = useState(true)
-  const finderRef = useRef(null)
+  const buttonRef = useRef(null)
+  const finderIcon = document.querySelector('.button_tab_icon')
+
   const variants = {
     tabOpen: { opacity: [0, 0, 0, 1], scale: [0.8, 1] },
     tabClosed: { opacity: [1, 1, 1, 1, 1, 0], scale: 1 }
   }
   const toggleProgram = () => {
-    finderRef.current.style.cursor = 'progress'
+    buttonRef.current.style.cursor = 'progress'
+    finderIcon?.classList.remove('clicked')
     setTimeout(() => {
       setOpen(true)
-      finderRef.current.style.cursor = 'default'
-    }, 120)
+      buttonRef.current.style.cursor = 'default'
+    }, 160)
   }
+
   return (
     <div className="App">
       <motion.div
@@ -27,7 +31,7 @@ function App() {
       >
         <Tab setOpen={setOpen} />
       </motion.div>
-      <button className='button_tab' ref={finderRef} onDoubleClick={toggleProgram}>
+      <button className='button_tab' ref={buttonRef} onClick={() => finderIcon?.classList.add('clicked')} onDoubleClick={toggleProgram}>
         <ImFinder className='button_tab_icon' />
       </button>
     </div >

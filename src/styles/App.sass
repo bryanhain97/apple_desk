@@ -15,7 +15,7 @@ body
     display: grid
     place-items: center
     min-height: 100vh
-    background-image: url('/../src/img/background.jpg')
+    background-image: url('/../src/img/background2.jpg')
     background-size: cover
 .button_tab
     position: absolute
@@ -36,5 +36,8 @@ body
         background-color: white
         color: #1b383f
     .button_tab_icon
+        position: relative
         transform: scale(5)
         color: #083442
+        &.clicked
+            color: #051d6d
