@@ -11,6 +11,30 @@ body
     height: 100vh
     overflow: hidden
 .App
+    position: relative
     display: grid
     place-items: center
     min-height: 100vh
+    background-image: url('/../src/img/background.jpg')
+    background-size: cover
+.button_tab
+    position: absolute
+    left: 55px
+    top: 55px
+    border-radius: 1px solid white
+    border: none
+    background-color: transparent
+    &::before
+        border-radius: 3px
+        position: absolute
+        top: 10px
+        left: 13px
+        content: ''
+        transform: translate(-50%,-50%)
+        width: 63px
+        height: 63px
+        background-color: white
+        color: #1b383f
+    .button_tab_icon
+        transform: scale(5)
+        color: #083442

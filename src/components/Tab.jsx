@@ -7,16 +7,20 @@ import { IoMdCloudOutline } from 'react-icons/io'
 import { MdDownloading, MdOutlineFolderShared } from 'react-icons/md'
 import { motion } from 'framer-motion'
 import Content from './Content'
+import ListItemHeader from './ListItemHeader'
 
-const Tab = () => {
+const Tab = ({ setOpen }) => {
     const [currentSelected, setCurrentSelected] = useState('AirDrop')
     const [closed, setClosed] = useState(false)
+
     const listItems = useRef(null)
     const tabRef = useRef(null)
+
     const variants = {
         open: { opacity: 1, scale: 1 },
         closed: { opacity: 0.35, scale: 0.95 },
     }
+
     useEffect(() => {
         listItems.current = [...document.querySelectorAll('li.sidebar_list_item')]
     }, [])
@@ -27,14 +31,8 @@ const Tab = () => {
         clickedItem.classList.add('selected')
         setCurrentSelected(e.currentTarget.innerText)
     }
-    const unmountComponent = () => {
-        tabRef.current.remove()
-    }
-    const toggleHide = (e) => {
-        e.currentTarget.classList.toggle('hide')
-        const currentList = e.currentTarget.nextSibling
-        currentList.classList.toggle('hide')
-    }
+    const unmountComponent = () => setOpen(false)
+
     return (
         <motion.div
             drag={!closed && true}
@@ -43,7 +41,7 @@ const Tab = () => {
             dragConstraints={{ left: -450, right: 450, top: -200, bottom: 200 }}
             variants={variants}
             ref={tabRef}
-            className='tab'
+            className={closed ? 'tab closed' : 'tab'}
             animate={!closed ? "open" : "closed"}
             onDoubleClick={() => setClosed(!closed)}
         >
@@ -54,7 +52,7 @@ const Tab = () => {
                     <button className="sidebar_button_resize"></button>
                 </div>
                 <div className="sidebar_main">
-                    <h5 onClick={toggleHide}>Favoriten</h5>
+                    <ListItemHeader title='Favoriten' />
                     <ul id='favorite_list'>
                         <li className="sidebar_list_item favorite_item" id={useId()} onClick={selectListItem}>
                             <BiCrosshair className="favorite_item_icon" />
@@ -77,7 +75,7 @@ const Tab = () => {
                             <span className="favorite_item_text">Downloads</span>
                         </li>
                     </ul>
-                    <h5 onClick={toggleHide}>iCloud</h5>
+                    <ListItemHeader title='iCloud' />
                     <ul id='cloud-list'>
                         <li className="sidebar_list_item cloud_item" id={useId()} onClick={selectListItem}>
                             <IoMdCloudOutline className="cloud_item_icon" />
@@ -88,7 +86,7 @@ const Tab = () => {
                             <span className="cloud_item_text">Geteilt</span>
                         </li>
                     </ul>
-                    <h5 onClick={toggleHide}>Orte</h5>
+                    <ListItemHeader title='Orte' />
                     <ul id='orte-list'>
                         <li className="sidebar_list_item orte_item" id={useId()} onClick={selectListItem}>
                             <IoMdCloudOutline className="orte_item_icon" />
@@ -99,7 +97,7 @@ const Tab = () => {
             </div>
             <div className='content'>
                 <div className="content_head">
-                    Finder {'>'} {currentSelected}
+                    {currentSelected}
                 </div>
                 <div className="content_main">
                     <Content currentSelected={currentSelected} />
