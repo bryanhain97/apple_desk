@@ -1,31 +1,29 @@
-import programmeImage from '../img/programme.png'
 import '../styles/partials/_Content.module.sass'
 
 const renderSwitch = (content) => {
     switch (content) {
         case "AirDrop":
             return (
-                <p>you suck</p>
+                <p>airdrop content</p>
             )
         case "Programme":
             return (
-                <img className='programme_image' src={programmeImage} alt='programme' />
-                // <p>you suck brav</p>
+                <p>programme content</p>
             )
         case "Schreibtisch":
             return (
-                <p>you really suck goddamn</p>
+                <p>schreibtisch content</p>
             )
         case "Dokumente":
             return (
-                <p>you suck toes boi</p>
+                <p>dokumente content</p>
             )
         case "Downloads":
             return (
-                <p>you suck brav</p>
+                <p>downloads content</p>
             )
         default:
-            return null
+            return <p>brav</p>
     }
 }
 

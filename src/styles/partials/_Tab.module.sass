@@ -1,8 +1,6 @@
-@import './_Content.module'
-    
 @mixin sidebarButton
-    width: 12px
-    height: 12px
+    width: 11px
+    height: 11px
     margin: 0 5px
     cursor: pointer
     border-radius: 50%
@@ -12,24 +10,45 @@
     align-items: center
     width: 100%
     height: 100%
-    margin-bottom: 10px
+@mixin gridBorder
+    &::before
+        content: ''
+        position: absolute
+        top: 0
+        left: 0px
+        width: 150px
+        height: 100%
+        background-color: #e0e0e0b2
+        border-right: 1px solid #e5e5e5
+    &::after
+        content: ''
+        position: absolute
+        top: 50px
+        left: 150px
+        width: 100%
+        border-bottom: 1px solid #acacac
 
 .tab
-    padding: 10px
+    @include gridBorder
+    position: relative
     overflow: hidden
     width: 800px
     height: 550px
-    background-color: #d1d1d1
+    background-color: #eeeeee
+    padding-top: 6px
     display: grid
-    border-radius: 6px
+    border-radius: 12px
     gap: 10px
     grid-template-areas: "shead chead" "sidebar content"
     grid-template-rows: 40px 1fr
-    grid-template-columns: 130px 1fr
+    grid-template-columns: 150px 1fr
     .sidebar
+        position: relative
         grid-area: 'sidebar'
+        padding: 0 6px
         .sidebar_head
             grid-area: shead
+            margin-bottom: 10px
             @include headArea
             .sidebar_button_close,
             .sidebar_button_hide,
@@ -43,24 +62,40 @@
                 background-color: #58b558
         .sidebar_main
             h5
-                color: #909090
+                color: #a0a0a0
                 font-size: 0.70rem
                 margin: 0
                 margin-left: 5px
+                cursor: default
             ul
+                position: relative
                 margin: 4px 0
-                padding-left: 4px
+                padding-left: 0
                 list-style: none
-                .favorite_item
+                height: min-content
+                overflow-y: hidden
+                transition: height 2s ease
+                &.hide
+                    max-height: 0px
+                .favorite_item,
+                .cloud_item,
+                .orte_item
+                    position: relative
                     height: 100%
                     display: flex
                     align-items: flex-end
                     padding: 6px 8px
                     border-radius: 6px
-                    .favorite_item_icon
+                    margin-bottom: 1px
+                    transition: position 0.25s ease
+                    .favorite_item_icon,
+                    .cloud_item_icon,
+                    .orte_item_icon
                         transform: scale(1.25)
                         color: #1482ff
-                    .favorite_item_text
+                    .favorite_item_text,
+                    .cloud_item_text,
+                    .orte_item_text
                         cursor: default
                         z-index: 2
                         width: 100%
@@ -69,11 +104,11 @@
                         color: #333333
                         letter-spacing: 0.25px
                     &.selected
-                        background-color: #bebebe
+                        background-color: #cccccc
     .content
         grid-area: 'content'
         .content_head
             grid-area: chead
             @include headArea
         .content_main
-            width: inherit
+            position: relative
