@@ -45,8 +45,8 @@
     grid-template-columns: 150px 1fr
     z-index: 2
     &.closed
-        ul
-            pointer-events: none
+        pointer-events: none
+        display: none
     .sidebar
         position: relative
         grid-area: 'sidebar'
@@ -92,8 +92,6 @@
                 .favorite_item,
                 .cloud_item,
                 .orte_item
-                    &:first-child
-                        padding-top: 3px
                     position: relative
                     height: 100%
                     display: flex
@@ -102,6 +100,8 @@
                     border-radius: 6px
                     margin-bottom: 1px
                     transition: position 0.25s ease
+                    &:first-child
+                        padding-top: 3px
                     .favorite_item_icon,
                     .cloud_item_icon,
                     .orte_item_icon

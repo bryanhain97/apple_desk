@@ -29,10 +29,11 @@ function App() {
         animate={open ? 'tabOpen' : 'tabClosed'}
         transition={{ duration: 0.5 }}
       >
-        <Tab setOpen={setOpen} />
+        <Tab setOpen={setOpen} open={open} />
       </motion.div>
       <button className='button_tab' ref={buttonRef} onClick={() => finderIcon?.classList.add('clicked')} onDoubleClick={toggleProgram}>
         <ImFinder className='button_tab_icon' />
+        <span className='button_tab_name'>Finder</span>
       </button>
     </div >
   );

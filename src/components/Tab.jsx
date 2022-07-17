@@ -9,17 +9,11 @@ import { motion } from 'framer-motion'
 import Content from './Content'
 import ListItemHeader from './ListItemHeader'
 
-const Tab = ({ setOpen }) => {
+const Tab = ({ setOpen, open }) => {
     const [currentSelected, setCurrentSelected] = useState('AirDrop')
-    const [closed, setClosed] = useState(false)
 
     const listItems = useRef(null)
     const tabRef = useRef(null)
-
-    const variants = {
-        open: { opacity: 1, scale: 1 },
-        closed: { opacity: 0.35, scale: 0.95 },
-    }
 
     useEffect(() => {
         listItems.current = [...document.querySelectorAll('li.sidebar_list_item')]
@@ -35,15 +29,12 @@ const Tab = ({ setOpen }) => {
 
     return (
         <motion.div
-            drag={!closed && true}
+            drag
             dragMomentum={false}
             whileTap={{ cursor: "grabbing" }}
             dragConstraints={{ left: -450, right: 450, top: -200, bottom: 200 }}
-            variants={variants}
             ref={tabRef}
-            className={closed ? 'tab closed' : 'tab'}
-            animate={!closed ? "open" : "closed"}
-            onDoubleClick={() => setClosed(!closed)}
+            className={open ? 'tab' : 'tab closed'}
         >
             <div className='sidebar'>
                 <div className='sidebar_head'>
