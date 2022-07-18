@@ -1,0 +1,81 @@
+@mixin wifiCircle($width,$height, $translateX: 46%, $translateY: -46%)
+    width: $width
+    height: $height
+    border-radius: 50%
+    border: 0.75px solid #c6c6c6
+    transform: translateX($translateX) translateY($translateY)
+
+.airdrop_content_icon, .wifi_circle
+    position: absolute
+    pointer-events: none
+    top: 80%
+    right: 50%
+
+.airdrop_content_icon
+    transform: scale(3.5)
+    stroke-width: 1
+    color: #0180ff
+
+.wifi_circle
+    &:nth-of-type(1)
+        @include wifiCircle(160px, 160px)
+    &:nth-of-type(2)
+        @include wifiCircle(360px, 360px)
+    &:nth-of-type(3)
+        @include wifiCircle(540px, 540px)
+    &:nth-of-type(4)
+        @include wifiCircle(720px, 720px)
+    &:nth-of-type(5)
+        @include wifiCircle(900px, 900px)
+    &:nth-of-type(6)
+        @include wifiCircle(1080px, 1080px)
+
+.iphone
+    position: absolute
+    cursor: pointer
+    top: 33%
+    left: 20%
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 100px
+    height: 100px
+    .iphone_img
+        box-shadow: 3px 3px 10px grey
+        max-height: 85px
+        width: 85px
+        height: auto
+        object-fit: cover
+        border-radius: 50%
+        position: relative
+        top: -18px
+        border: 1px solid #ffffff
+        z-index: 4
+    .iphone_text
+        position: relative
+        top: -14px
+        display: inline
+        font-size: 0.8rem
+        text-align: center
+        z-index: 4
+        .iphone_type,.iphone_number
+            margin-top: 2px
+            color: #7e7e7e
+            font-size: 0.9em
+        .iphone_type
+            display: block
+            font-size: 0.9em
+        .iphone_number
+            margin-top: 2px
+            color: #7e7e7e
+            font-size: 0.9em
+    .iphone_signal
+        pointer-events: none
+        width: 100px
+        height: 100px
+        border-radius: 50%
+        position: absolute
+        top: -23%
+        transform: translate(-50%,-50%)
+        z-index: 2
+        background-color: #77777799
