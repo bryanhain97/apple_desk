@@ -1,0 +1,42 @@
+.button_tab
+    position: absolute
+    left: 55px
+    top: 55px
+    border-radius: 1px solid white
+    border: none
+    background-color: transparent
+    &::before
+        border-radius: 3px
+        position: absolute
+        top: 10px
+        left: 13px
+        content: ''
+        transform: translate(-50%,-50%)
+        width: 63px
+        height: 63px
+        background-color: white
+        color: #1b383f
+    .button_tab_icon
+        position: relative
+        transform: scale(5)
+        color: #083442
+        z-index: 3
+        &.clicked
+            color: #051d6d
+    .button_tab_text
+        position: relative
+        top: 48px
+        left: -26px
+        font-weight: 700
+        &.clicked
+            color: #051d6d
+            &::before
+                content: ''
+                position: absolute
+                top: -85px
+                left: -32px
+                height: 55px
+                width: 55px
+                padding: 25px
+                background-color: #aab7ec5f
+                z-index: 1
