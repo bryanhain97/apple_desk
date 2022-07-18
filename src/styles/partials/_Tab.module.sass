@@ -39,12 +39,12 @@
     overflow: hidden
     width: 800px
     height: 550px
-    padding: 2px
     display: grid
     row-gap: 10px
+    padding-left: 1px
     grid-template-areas: "shead chead" "sidebar content"
-    grid-template-rows: 40px 1fr
-    grid-template-columns: 150px 643px
+    grid-template-rows: 50px 1fr
+    grid-template-columns: 151px 643px
     z-index: 100
     &.closed
         pointer-events: none
@@ -121,10 +121,30 @@
                         background-color: #c5c5c5
     .content
         grid-area: 'content'
+        box-sizing: border-box
         border-bottom: 1px solid #cecece
-        margin-left: 1px
         .content_head
             grid-area: chead
+            display: flex
+            align-items: center
+            button
+                border: none
+                display: grid
+                place-items: center
+                height: 32px
+                width: 32px
+                margin-left: 6px
+                .button_chevron
+                    transform: scale(1.1)
+                    stroke-width: 0.5
+                    color: #737373b5
             @include headArea
+            .content_title
+                margin-left: 6px
+                font-weight: 400
+                color: #4e4e4ed7
         .content_main
+            overflow: hidden
+            height: 512px
             position: relative
+            top: 1px

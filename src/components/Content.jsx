@@ -1,10 +1,12 @@
-import '../styles/partials/_Content.module.sass'
+import {
+    AirDropContent
+} from './content/index'
 
 const renderSwitch = (content) => {
     switch (content) {
         case "AirDrop":
             return (
-                <p>airdrop content</p>
+                <AirDropContent />
             )
         case "Programme":
             return (

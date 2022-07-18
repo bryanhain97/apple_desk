@@ -1,16 +1,17 @@
 import React, { useState, useId, useEffect, useRef } from 'react'
-import { BiCrosshair } from 'react-icons/bi'
 import { GiCrossedAirFlows } from 'react-icons/gi'
 import { CgDesktop } from 'react-icons/cg'
 import { IoDocumentOutline } from 'react-icons/io5'
-import { IoMdCloudOutline } from 'react-icons/io'
+import { IoMdCloudOutline, IoMdWifi } from 'react-icons/io'
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs'
 import { MdDownloading, MdOutlineFolderShared } from 'react-icons/md'
 import { motion } from 'framer-motion'
 import Content from './Content'
 import ListItemHeader from './ListItemHeader'
 
 const Tab = ({ setOpen, open }) => {
-    const [currentSelected, setCurrentSelected] = useState('AirDrop')
+    const [prevSelected, setPrevSelected] = useState(null)
+    const [currentSelected, setCurrentSelected] = useState('Programme')
     const [tabNormal, setTabNormal] = useState(true)
     const listItems = useRef(null)
     const tabRef = useRef(null)
@@ -54,10 +55,10 @@ const Tab = ({ setOpen, open }) => {
                     <ListItemHeader title='Favoriten' />
                     <ul id='favorite_list'>
                         <li className="sidebar_list_item favorite_item" id={useId()} onClick={selectListItem}>
-                            <BiCrosshair className="favorite_item_icon" />
+                            <IoMdWifi className="favorite_item_icon" />
                             <span className="favorite_item_text">AirDrop</span>
                         </li>
-                        <li className="sidebar_list_item favorite_item" id={useId()} onClick={selectListItem}>
+                        <li className="sidebar_list_item favorite_item selected" id={useId()} onClick={selectListItem}>
                             <GiCrossedAirFlows className="favorite_item_icon" />
                             <span className="favorite_item_text">Programme</span>
                         </li>
@@ -96,7 +97,13 @@ const Tab = ({ setOpen, open }) => {
             </div>
             <div className='content'>
                 <div className="content_head">
-                   {currentSelected}
+                    <button>
+                        <BsChevronLeft className='button_chevron' />
+                    </button>
+                    <button>
+                        <BsChevronRight className='button_chevron' />
+                    </button>
+                    <h4 className='content_title'>{currentSelected}</h4>
                 </div>
                 <div className="content_main">
                     <Content currentSelected={currentSelected} />
