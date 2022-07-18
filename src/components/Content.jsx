@@ -23,7 +23,7 @@ const renderSwitch = (content) => {
                 <p>downloads content</p>
             )
         default:
-            return <p>brav</p>
+            return <p className='content_default_text'>Dieser Ordner ist leer.</p>
     }
 }
 

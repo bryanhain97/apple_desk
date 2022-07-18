@@ -18,15 +18,15 @@
     &::before
         top: 0
         left: 0px
-        width: 155px
+        width: 153px
         height: 100%
-        background: linear-gradient(#e1e1e1,#d3c4eaee)
+        background: linear-gradient(#e1e1e1,#c8d1e5f9)
     &::after
         top: 0px
-        left: 155px
+        left: 153px
         height: 100%
-        width: 650px
-        background-color: #e7e7e7f9
+        width: 652px
+        background-color: #efefeff9
         z-index: -1
 
 .tab
@@ -35,15 +35,14 @@
     overflow: hidden
     width: 800px
     height: 550px
-    padding: 6px
-    padding-left: 3px
+    padding: 6px 2px
     display: grid
     border-radius: 12px
     row-gap: 10px
     grid-template-areas: "shead chead" "sidebar content"
     grid-template-rows: 40px 1fr
     grid-template-columns: 150px 1fr
-    z-index: 2
+    z-index: 100
     &.closed
         pointer-events: none
         display: none
@@ -84,7 +83,7 @@
                 margin: 4px 0
                 padding-left: 0
                 list-style: none
-                max-height: 150px
+                max-height: 180px
                 overflow-y: hidden
                 transition: max-height 0.15s ease-in-out
                 &.hide
@@ -100,8 +99,6 @@
                     border-radius: 6px
                     margin-bottom: 1px
                     transition: position 0.25s ease
-                    &:first-child
-                        padding-top: 3px
                     .favorite_item_icon,
                     .cloud_item_icon,
                     .orte_item_icon
@@ -118,10 +115,9 @@
                         color: #333333
                         letter-spacing: 0.25px
                     &.selected
-                        background-color: #b6b6b6
+                        background-color: #c5c5c5
     .content
         grid-area: 'content'
-        padding-left: 10px
         border-bottom: 1px solid #cecece
         .content_head
             grid-area: chead

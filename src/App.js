@@ -9,16 +9,15 @@ function App() {
   const buttonRef = useRef(null)
   const buttonText = useRef(null)
   const finderIcon = document.querySelector('.button_tab_icon')
-
   const variants = {
     tabOpen: { opacity: [0, 0, 0, 1], scale: [0.8, 1] },
-    tabClosed: { opacity: [1, 1, 1, 1, 1, 0], scale: 1 }
+    tabClosed: { opacity: [1, 1, 1, 1, 1, 0], scale: 1 },
   }
+
   const toggleProgram = () => {
-    if (finderIcon.classList.contains('clicked') && buttonText.classList.contains('clicked')) {
-      finderIcon.classList.remove('clicked')
-      buttonText.classList.remove('clicked')
-    }
+    finderIcon?.classList.remove('clicked')
+    buttonText.current.classList.remove('clicked')
+    buttonRef.current.classList.remove('clicked')
     buttonRef.current.style.cursor = 'progress'
     setTimeout(() => {
       setOpen(true)
@@ -29,7 +28,6 @@ function App() {
     finderIcon?.classList.toggle('clicked')
     buttonText.current.classList.toggle('clicked')
   }
-
 
   return (
     <div className="App">
@@ -45,7 +43,7 @@ function App() {
         <span className='button_tab_text' ref={buttonText}>Finder</span>
       </button>
     </div >
-  );
+  )
 }
 
 export default App;

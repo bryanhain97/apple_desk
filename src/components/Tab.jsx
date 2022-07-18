@@ -11,10 +11,13 @@ import ListItemHeader from './ListItemHeader'
 
 const Tab = ({ setOpen, open }) => {
     const [currentSelected, setCurrentSelected] = useState('AirDrop')
-
+    const [tabNormal, setTabNormal] = useState(true)
     const listItems = useRef(null)
     const tabRef = useRef(null)
-
+    const variants = {
+        tab_large: { scale: 1.45 },
+        tab_normal: { scale: 1 }
+    }
     useEffect(() => {
         listItems.current = [...document.querySelectorAll('li.sidebar_list_item')]
     }, [])
@@ -26,11 +29,16 @@ const Tab = ({ setOpen, open }) => {
         setCurrentSelected(e.currentTarget.innerText)
     }
     const unmountComponent = () => setOpen(false)
+    const resizeTab = () => {
+        setTabNormal(!tabNormal)
+    }
 
     return (
         <motion.div
             drag
             dragMomentum={false}
+            variants={variants}
+            animate={tabNormal ? 'tab_normal' : 'tab_large'}
             whileTap={{ cursor: "grabbing" }}
             dragConstraints={{ left: -450, right: 450, top: -200, bottom: 200 }}
             ref={tabRef}
@@ -40,7 +48,7 @@ const Tab = ({ setOpen, open }) => {
                 <div className='sidebar_head'>
                     <button className="sidebar_button_close" onClick={unmountComponent}></button>
                     <button className="sidebar_button_hide"></button>
-                    <button className="sidebar_button_resize"></button>
+                    <button className="sidebar_button_resize" onClick={resizeTab}></button>
                 </div>
                 <div className="sidebar_main">
                     <ListItemHeader title='Favoriten' />
@@ -88,7 +96,7 @@ const Tab = ({ setOpen, open }) => {
             </div>
             <div className='content'>
                 <div className="content_head">
-                    {currentSelected}
+                   {currentSelected}
                 </div>
                 <div className="content_main">
                     <Content currentSelected={currentSelected} />
