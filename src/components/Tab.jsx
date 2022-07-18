@@ -10,7 +10,7 @@ import Content from './Content'
 import ListItemHeader from './ListItemHeader'
 
 const Tab = ({ setOpen, open }) => {
-    const [prevSelected, setPrevSelected] = useState(null)
+    // const [prevSelected, setPrevSelected] = useState(null)
     const [currentSelected, setCurrentSelected] = useState('Programme')
     const [tabNormal, setTabNormal] = useState(true)
     const listItems = useRef(null)

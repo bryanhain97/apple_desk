@@ -8,7 +8,7 @@
 .airdrop_content_icon, .wifi_circle
     position: absolute
     pointer-events: none
-    top: 80%
+    top: 78%
     right: 50%
 
 .airdrop_content_icon
@@ -30,6 +30,16 @@
     &:nth-of-type(6)
         @include wifiCircle(1080px, 1080px)
 
+.subtitle, .subtitle_visibility
+    position: absolute
+    left: 50%
+    top: 85%
+    font-size: 0.75rem
+    transform: translate(-50%,-50%)
+.subtitle_visibility
+    color: #0180ffda
+    top: 88%
+    left: 49%
 .iphone
     position: absolute
     cursor: pointer

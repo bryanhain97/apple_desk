@@ -5,10 +5,12 @@ import { motion } from 'framer-motion'
 
 const Content = () => {
     const [hovered, setHovered] = useState(false)
-    const delayOfMount = 1.5
+    const delayOfMount = Math.random() * 1.2 + 0.25
     return (
         <>
             <IoMdWifi className='airdrop_content_icon' />
+            <p className='subtitle'>Mit AirDrop Dateien sofort mit anderen in der Nähe teilen.</p>
+            <p className='subtitle_visibility'>Nur sichtbar für Arbeitgeber.</p>
             <span className="wifi_circle"></span>
             <span className="wifi_circle"></span>
             <span className="wifi_circle"></span>

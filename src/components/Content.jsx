@@ -1,5 +1,6 @@
 import {
-    AirDropContent
+    AirDropContent,
+    Programme
 } from './content/index'
 
 const renderSwitch = (content) => {
@@ -10,7 +11,7 @@ const renderSwitch = (content) => {
             )
         case "Programme":
             return (
-                <p>programme content</p>
+                <Programme />
             )
         case "Schreibtisch":
             return (
