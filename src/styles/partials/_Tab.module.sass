@@ -18,14 +18,18 @@
     &::before
         top: 0
         left: 0px
+        border-top-left-radius: 12px
+        border-bottom-left-radius: 12px
         width: 153px
         height: 100%
         background: linear-gradient(#e1e1e1,#c8d1e5f9)
     &::after
         top: 0px
         left: 153px
+        border-top-right-radius: 12px
+        border-bottom-right-radius: 12px
         height: 100%
-        width: 652px
+        width: 642px
         background-color: #efefeff9
         z-index: -1
 
@@ -35,9 +39,8 @@
     overflow: hidden
     width: 800px
     height: 550px
-    padding: 6px 2px
+    padding: 2px
     display: grid
-    border-radius: 12px
     row-gap: 10px
     grid-template-areas: "shead chead" "sidebar content"
     grid-template-rows: 40px 1fr
@@ -119,6 +122,7 @@
     .content
         grid-area: 'content'
         border-bottom: 1px solid #cecece
+        margin-left: 1px
         .content_head
             grid-area: chead
             @include headArea
