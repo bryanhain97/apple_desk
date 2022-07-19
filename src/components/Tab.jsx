@@ -9,31 +9,60 @@ import { motion } from 'framer-motion'
 import Content from './Content'
 import ListItemHeader from './ListItemHeader'
 
+
+
 const Tab = ({ setOpen, open }) => {
-    // const [prevSelected, setPrevSelected] = useState(null)
+    const history = useState([])
+    const [prevSelected, setPrevSelected] = useState(null)
     const [currentSelected, setCurrentSelected] = useState('Programme')
+    const [nextSelected, setNextSelected] = useState(null)
     const [tabNormal, setTabNormal] = useState(true)
-    const listItems = useRef(null)
+
+    const sideBarItems = useRef(null)
     const tabRef = useRef(null)
     const variants = {
         tab_large: { scale: 1.45 },
         tab_normal: { scale: 1 }
     }
     useEffect(() => {
-        listItems.current = [...document.querySelectorAll('li.sidebar_list_item')]
+        sideBarItems.current = [...document.querySelectorAll('li.sidebar_list_item')]
     }, [])
+    useEffect(() => {
+    }, [history])
+
+    useEffect(() => {
+        sideBarItems.current.forEach(node => node.classList.remove('selected'))
+        const selection = sideBarItems.current.find(node => node.textContent === currentSelected)
+        selection.classList.add('selected')
+    }, [currentSelected])
 
     const selectListItem = (e) => {
-        listItems.current.forEach(listItem => listItem.classList.remove('selected'))
-        const clickedItem = listItems.current.find(item => item.id === e.currentTarget.id)
-        clickedItem.classList.add('selected')
+        const selectText = e.currentTarget.children[1]
+        setPrevSelected(currentSelected)
+        history.push(prevSelected)
         setCurrentSelected(e.currentTarget.innerText)
+        selectText.classList.add('selected')
     }
-    const unmountComponent = () => setOpen(false)
+    const unmountComponent = () => {
+        setOpen(false)
+        setTabNormal(true)
+    }
     const resizeTab = () => {
         setTabNormal(!tabNormal)
     }
-
+    const selectPreviousItem = () => {
+        if (prevSelected) {
+            setNextSelected(currentSelected)
+            setCurrentSelected(prevSelected)
+        }
+        return
+    }
+    const selectNextItem = () => {
+        if (nextSelected) {
+            setCurrentSelected(nextSelected)
+        }
+        return
+    }
     return (
         <motion.div
             drag
@@ -58,7 +87,7 @@ const Tab = ({ setOpen, open }) => {
                             <IoMdWifi className="favorite_item_icon" />
                             <span className="favorite_item_text">AirDrop</span>
                         </li>
-                        <li className="sidebar_list_item favorite_item selected" id={useId()} onClick={selectListItem}>
+                        <li className="sidebar_list_item favorite_item" id={useId()} onClick={selectListItem}>
                             <GiCrossedAirFlows className="favorite_item_icon" />
                             <span className="favorite_item_text">Programme</span>
                         </li>
@@ -97,11 +126,11 @@ const Tab = ({ setOpen, open }) => {
             </div>
             <div className='content'>
                 <div className="content_head">
-                    <button>
-                        <BsChevronLeft className='button_chevron' />
+                    <button className='content_button_prev' onClick={selectPreviousItem}>
+                        <BsChevronLeft className={prevSelected ? 'button_chevron clickable' : 'button_chevron'} />
                     </button>
-                    <button>
-                        <BsChevronRight className='button_chevron' />
+                    <button className='content_button_next' onClick={selectNextItem}>
+                        <BsChevronRight className={nextSelected ? 'button_chevron clickable' : 'button_chevron'} />
                     </button>
                     <h4 className='content_title'>{currentSelected}</h4>
                 </div>

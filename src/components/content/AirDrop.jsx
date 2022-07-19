@@ -16,7 +16,6 @@ const Content = () => {
             <span className="wifi_circle"></span>
             <span className="wifi_circle"></span>
             <span className="wifi_circle"></span>
-            <span className="wifi_circle"></span>
             <motion.div
                 animate={{ opacity: [0, 1] }}
                 transition={{ duration: 0.1, delay: delayOfMount }}
