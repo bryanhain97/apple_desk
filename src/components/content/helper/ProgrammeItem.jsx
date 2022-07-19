@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import { ContentContext } from '../Programme'
 
-const Content = ({ children, title, url }) => {
+const Content = ({ children, title, url, experience }) => {
     const current = useContext(ContentContext)
-
+    const tooltipRef = useRef(null)
     const dblClickProgram = (e, url) => {
         const textNode = e.currentTarget.children[1]
         textNode.classList.remove('clicked')
@@ -20,12 +20,24 @@ const Content = ({ children, title, url }) => {
         })
         textNode.classList.toggle('clicked')
     }
-
+    const showTooltip = () => tooltipRef.current.classList.add('show')
+    const hideTooltip = () => tooltipRef.current.classList.remove('show')
     return (
-        <div className="content_item" onClick={clickProgram} onDoubleClick={(e) => dblClickProgram(e, url)}>
+        <div
+            className="content_item"
+            onClick={clickProgram}
+            onDoubleClick={(e) => dblClickProgram(e, url)}
+            onMouseEnter={showTooltip}
+            onMouseLeave={hideTooltip}
+        >
             {children}
             <span className='content_name'>
                 {title}
+            </span>
+            <span className='content_tooltip' ref={tooltipRef}>
+                <p>Experience
+                    <span>{experience}</span>
+                </p>
             </span>
         </div>
     )
