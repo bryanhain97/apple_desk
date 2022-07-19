@@ -1,5 +1,6 @@
 import React, { useContext, useRef } from 'react'
 import { ContentContext } from '../Programme'
+import { motion } from 'framer-motion'
 
 const Content = ({ children, title, url, experience }) => {
     const current = useContext(ContentContext)
@@ -23,7 +24,10 @@ const Content = ({ children, title, url, experience }) => {
     const showTooltip = () => tooltipRef.current.classList.add('show')
     const hideTooltip = () => tooltipRef.current.classList.remove('show')
     return (
-        <div
+        <motion.div
+            drag
+            dragMomentum={false}
+            dragConstraints={{ left: -10, right: 10, top: 10, bottom: -10 }}
             className="content_item"
             onClick={clickProgram}
             onDoubleClick={(e) => dblClickProgram(e, url)}
@@ -39,7 +43,7 @@ const Content = ({ children, title, url, experience }) => {
                     <span>{experience}</span>
                 </p>
             </span>
-        </div>
+        </motion.div>
     )
 }
 

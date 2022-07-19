@@ -103,7 +103,7 @@ const Content = () => {
                 </ContentItem>
                 <ContentItem
                     experience='3 months'
-                    title='Three.JS'
+                    title='Three.js'
                     url='https://threejs.org/'
                 >
                     <SiThreedotjs className='content_icon threedotjs_icon' />
