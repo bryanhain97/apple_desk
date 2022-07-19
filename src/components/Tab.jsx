@@ -12,7 +12,6 @@ import ListItemHeader from './ListItemHeader'
 
 
 const Tab = ({ setOpen, open }) => {
-    const history = useState([])
     const [prevSelected, setPrevSelected] = useState(null)
     const [currentSelected, setCurrentSelected] = useState('Programme')
     const [nextSelected, setNextSelected] = useState(null)
@@ -24,13 +23,9 @@ const Tab = ({ setOpen, open }) => {
         tab_large: { scale: 1.45 },
         tab_normal: { scale: 1 }
     }
-    useEffect(() => {
-        sideBarItems.current = [...document.querySelectorAll('li.sidebar_list_item')]
-    }, [])
-    useEffect(() => {
-    }, [history])
 
     useEffect(() => {
+        sideBarItems.current = [...document.querySelectorAll('li.sidebar_list_item')]
         sideBarItems.current.forEach(node => node.classList.remove('selected'))
         const selection = sideBarItems.current.find(node => node.textContent === currentSelected)
         selection.classList.add('selected')
@@ -39,7 +34,6 @@ const Tab = ({ setOpen, open }) => {
     const selectListItem = (e) => {
         const selectText = e.currentTarget.children[1]
         setPrevSelected(currentSelected)
-        history.push(prevSelected)
         setCurrentSelected(e.currentTarget.innerText)
         selectText.classList.add('selected')
     }
@@ -51,17 +45,17 @@ const Tab = ({ setOpen, open }) => {
         setTabNormal(!tabNormal)
     }
     const selectPreviousItem = () => {
-        if (prevSelected) {
-            setNextSelected(currentSelected)
+        if (prevSelected !== currentSelected && prevSelected) {
             setCurrentSelected(prevSelected)
+            setNextSelected(currentSelected)
         }
         return
     }
     const selectNextItem = () => {
-        if (nextSelected) {
+        if (nextSelected !== currentSelected && nextSelected) {
             setCurrentSelected(nextSelected)
+            setPrevSelected(currentSelected)
         }
-        return
     }
     return (
         <motion.div
@@ -127,10 +121,10 @@ const Tab = ({ setOpen, open }) => {
             <div className='content'>
                 <div className="content_head">
                     <button className='content_button_prev' onClick={selectPreviousItem}>
-                        <BsChevronLeft className={prevSelected ? 'button_chevron clickable' : 'button_chevron'} />
+                        <BsChevronLeft className={prevSelected !== currentSelected && prevSelected ? 'button_chevron clickable' : 'button_chevron'} />
                     </button>
                     <button className='content_button_next' onClick={selectNextItem}>
-                        <BsChevronRight className={nextSelected ? 'button_chevron clickable' : 'button_chevron'} />
+                        <BsChevronRight className={nextSelected !== currentSelected && nextSelected ? 'button_chevron clickable' : 'button_chevron'} />
                     </button>
                     <h4 className='content_title'>{currentSelected}</h4>
                 </div>

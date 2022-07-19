@@ -39,7 +39,7 @@ const Content = () => {
                     <SiTypescript className='content_icon typescript_icon' />
                 </ContentItem>
                 <ContentItem
-                    experience='18 months'
+                    experience='20 months'
                     title='JavaScript'
                     url='https://www.javascript.com/'
                 >

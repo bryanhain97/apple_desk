@@ -22,7 +22,7 @@ function App() {
     setTimeout(() => {
       setOpen(true)
       buttonRef.current.style.cursor = 'default'
-    }, 160)
+    }, 180)
   }
   const toggleClicked = () => {
     finderIcon?.classList.toggle('clicked')
