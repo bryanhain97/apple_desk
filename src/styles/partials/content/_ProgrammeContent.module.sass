@@ -1,0 +1,66 @@
+.content_grid_container
+    display: grid
+    width: 100%
+    height: 100%
+    grid-template-columns: repeat(5,1fr)
+    grid-template-rows: repeat(5,100px)
+    place-items: center
+    z-index: 10
+    .content_item
+        cursor: pointer
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        .content_icon,
+        .content_name
+            display: block
+        .content_icon
+            width: 55px
+            height: 55px
+            margin-bottom: 6px
+            &.typescript_icon
+                color: #007acc
+            &.javascript_icon
+                color: #323330
+            &.blender_icon
+                color: #EA7600
+            &.discord_icon
+                color: #5865F2
+            &.html_icon
+                color: #da5b11
+            &.css_icon
+                color: #264de4
+            &.react_icon
+                color: #61DBFB
+            &.jest_icon
+                color: crimson
+            &.tlr_icon
+                color: #e43f39
+            &.git_icon
+                color: #F1502F
+            &.threedotjs_icon
+                color: black
+            &.sass_icon
+                color: #cd6799
+            &.mongodb_icon
+                color: #4DB33D
+            &.jira_icon
+                color: #247EF5
+            &.python_icon
+                color: #f7cc40
+            &.npm_icon
+                color: #CC3534
+            &.nodedotjs_icon
+                color: #68a063
+        .content_name
+            padding-top: 2px
+            position: relative
+            font-size: 0.75rem
+            text-transform: capitalize
+            &.clicked
+                padding-left: 3px
+                padding-right: 3px
+                border-radius: 3px
+                color: #ffffff
+                background-color: #0051ff
