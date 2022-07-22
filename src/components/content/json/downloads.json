@@ -1,28 +1,35 @@
 {
     "lebenslauf": {
         "name": "Curriculum Vitae",
-        "href": "/src/docs/Lebenslauf_20.06.2022.pdf",
+        "href": "/docs/Lebenslauf.pdf",
         "type": "PDF",
         "file_size": "2.2MB",
         "category": "Lebenslauf"
     },
+    "studienbescheinigung": {
+        "name": "Studienbescheinigung",
+        "href": "/docs/Studienbescheinigung.pdf",
+        "type": "PDF",
+        "file_size": "56KB",
+        "category": "Bescheinigung"
+    },
     "certificate_01": {
         "name": "Frontend End Development Libraries",
-        "href": "/src/img/libraries.png",
+        "href": "/img/libraries.png",
         "type": "PNG",
         "file_size": "256KB",
         "category": "Zertifikat"
     },
     "certificate_02": {
         "name": "JavaScript Algorithms and Data Structures",
-        "href": "/src/img/algorithms.png",
+        "href": "/img/algorithms.png",
         "type": "PNG",
         "file_size": "276KB",
         "category": "Zertifikat"
     },
     "certificate_03": {
         "name": "Responsive Web Design",
-        "href": "/src/img/responsivedesign.png",
+        "href": "/img/responsivedesign.png",
         "type": "PNG",
         "file_size": "256KB",
         "category": "Zertifikat"

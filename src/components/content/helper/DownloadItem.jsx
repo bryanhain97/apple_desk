@@ -1,6 +1,4 @@
-import React, {
-    useRef
-} from 'react'
+import React from 'react'
 
 
 const DokumenteItem = (
@@ -9,35 +7,22 @@ const DokumenteItem = (
         type = 'type',
         file_size = '0 KB',
         href = '#',
-        category = 'certificate',
+        category = 'Lebenslauf',
     }
 ) => {
-    const ref = useRef(null)
-
-    const selectItem = (e) => {
-        e.preventDefault()
+    const downloadItem = (e) => {
         document.querySelectorAll('a.dokumente_list_item').forEach(node => {
             node.classList.remove('selected')
         })
         e.currentTarget.classList.toggle('selected')
     }
-    const downloadSingleItem = (e) => {
-        const downloadTag = document.createElement('a')
-        e.currentTarget.classList.remove('selected')
-        downloadTag.href = e.currentTarget.href
-        downloadTag.download = e.currentTarget.children[0].textContent
-        console.log(downloadTag.href)
-        downloadTag.click()
-        downloadTag.remove()
-    }
+
     return (
         <a
-            ref={ref}
-            onClick={selectItem}
-            onDoubleClick={downloadSingleItem}
+            download
+            onClick={downloadItem}
             className='downloads_list_item'
             href={href}
-            download
         >
             <span className='item_name'>{name}</span>
             <span className='item_type'>{type}</span>
