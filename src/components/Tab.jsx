@@ -127,6 +127,9 @@ const Tab = ({ setOpen, open }) => {
                         <BsChevronRight className={nextSelected !== currentSelected && nextSelected ? 'button_chevron clickable' : 'button_chevron'} />
                     </button>
                     <h4 className='content_title'>{currentSelected}</h4>
+                    {/**
+                     * DEPENDING ON CURRENT SELECT INSERT FILTERS / ETC
+                     */}
                 </div>
                 <div className="content_main">
                     <Content currentSelected={currentSelected} />

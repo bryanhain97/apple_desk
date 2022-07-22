@@ -5,6 +5,8 @@ import { motion } from 'framer-motion'
 const Content = ({ children, title, url, experience }) => {
     const current = useContext(ContentContext)
     const tooltipRef = useRef(null)
+
+
     const dblClickProgram = (e, url) => {
         const textNode = e.currentTarget.children[1]
         textNode.classList.remove('clicked')
@@ -15,7 +17,7 @@ const Content = ({ children, title, url, experience }) => {
         const textNodes = gridItems.map(gridItem => gridItem.children[1])
         const textNode = e.currentTarget.children[1]
         textNodes.forEach(currNode => {
-            if (currNode.textContent !== textNode.textContent) {
+            if (currNode?.textContent !== textNode?.textContent) {
                 currNode.classList.remove('clicked')
             }
         })

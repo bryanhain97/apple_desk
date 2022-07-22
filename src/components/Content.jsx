@@ -1,6 +1,7 @@
 import {
     AirDropContent,
-    Programme
+    Programme,
+    Downloads
 } from './content/index'
 
 const renderSwitch = (content) => {
@@ -23,7 +24,7 @@ const renderSwitch = (content) => {
             )
         case "Downloads":
             return (
-                <p>downloads content</p>
+                <Downloads />
             )
         default:
             return <p className='content_default_text'>Dieser Ordner ist leer.</p>
