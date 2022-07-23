@@ -3,6 +3,8 @@ import Tab from './components/Tab'
 import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ImFinder } from 'react-icons/im'
+import Dock from './components/Dock'
+
 
 function App() {
   const [open, setOpen] = useState(true)
@@ -42,6 +44,7 @@ function App() {
         <ImFinder className='button_tab_icon' />
         <span className='button_tab_text' ref={buttonText}>Finder</span>
       </button>
+      <Dock />
     </div >
   )
 }
