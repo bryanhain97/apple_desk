@@ -1,11 +1,10 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import DownloadItem from './helper/DownloadItem'
 import DOWNLOADS from './json/downloads.json'
 
 
 const Content = () => {
     const ref = useRef(null)
-    const [listItems, setListItems] = useState(Object.values(DOWNLOADS))
 
     const removeAllSelections = () => {
         for (let item of ref.current.children) {
@@ -22,7 +21,7 @@ const Content = () => {
                 <span>File Size</span>
             </div>
             <div className="downloads_list_items" ref={ref}>
-                {listItems && listItems.map(
+                {Object.values(DOWNLOADS).map(
                     ({
                         name,
                         href,
