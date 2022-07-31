@@ -2,9 +2,10 @@
     &::after
         content: ''
         position: absolute
-        top: 0
+        top: 50%
+        transform: translateY(-50%)
         right: 0
-        height: 100%
+        height: 70%
         margin-right: $rightMargin
         width: 1px
         background-color: #8f8f8fbb
@@ -18,6 +19,7 @@ $otherColumnWidth: 15%
     height: 100%
     margin: 0px
     z-index: 30
+    overflow: hidden
     .downloads_list_categories
         margin-bottom: 5px
         display: flex
@@ -27,6 +29,9 @@ $otherColumnWidth: 15%
         border-bottom: 1px solid #bcbcbcbb
         color: #8e8e8e
         span
+            display: flex
+            align-items: center
+            height: 100%
             position: relative
             width: $otherColumnWidth
             white-space: nowrap

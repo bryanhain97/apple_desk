@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 
 const DokumenteItem = (
@@ -10,17 +10,20 @@ const DokumenteItem = (
         category = 'Lebenslauf',
     }
 ) => {
-    const downloadItem = (e) => {
-        document.querySelectorAll('a.dokumente_list_item').forEach(node => {
-            node.classList.remove('selected')
-        })
-        e.currentTarget.classList.toggle('selected')
+    const downloadRef = useRef(null)
+    const clickDownloadItem = (e) => {
+        for (let downloadItem of e.currentTarget.parentNode.children) {
+            downloadItem.classList.remove('selected')
+        }
+        e.currentTarget.classList.add('selected')
     }
-
+    const downloadItem = () => {
+        downloadRef.current.click()
+    }
     return (
-        <a
-            download
-            onClick={downloadItem}
+        <div
+            onClick={clickDownloadItem}
+            onDoubleClick={downloadItem}
             className='downloads_list_item'
             href={href}
         >
@@ -28,7 +31,8 @@ const DokumenteItem = (
             <span className='item_type'>{type}</span>
             <span className='item_category'>{category}</span>
             <span className='item_file_size'>{file_size}</span>
-        </a>
+            <a href={href} ref={downloadRef} className='item_download' download >{''}</a>
+        </div>
     )
 }
 

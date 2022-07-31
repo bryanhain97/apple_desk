@@ -1,7 +1,8 @@
 import {
     AirDropContent,
     Programme,
-    Downloads
+    Downloads,
+    Schreibtisch
 } from './content/index'
 
 const renderSwitch = (content) => {
@@ -15,13 +16,9 @@ const renderSwitch = (content) => {
                 <Programme />
             )
         case "Schreibtisch":
-            return (
-                <p>schreibtisch content</p>
-            )
+            return <Schreibtisch />
         case "Dokumente":
-            return (
-                <p>dokumente content</p>
-            )
+            return
         case "Downloads":
             return (
                 <Downloads />

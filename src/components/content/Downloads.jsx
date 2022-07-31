@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import DownloadItem from './helper/DownloadItem'
 import DOWNLOADS from './json/downloads.json'
 
 
 const Content = () => {
+    const ref = useRef(null)
+    const [listItems, setListItems] = useState(Object.values(DOWNLOADS))
 
     const removeAllSelections = () => {
-        document
-            .querySelectorAll('.downloads_list_item')
-            .forEach(list_item => list_item.classList.remove('selected'))
+        for (let item of ref.current.children) {
+            item.classList.remove('selected')
+        }
     }
 
     return (
@@ -19,15 +21,15 @@ const Content = () => {
                 <span>Category</span>
                 <span>File Size</span>
             </div>
-            <div className="downloads_list_items">
-                {Object.entries(DOWNLOADS).map(
-                    ([key, {
+            <div className="downloads_list_items" ref={ref}>
+                {listItems && listItems.map(
+                    ({
                         name,
                         href,
                         type,
                         file_size,
                         category
-                    }]) => (
+                    }, key) => (
                         <DownloadItem
                             key={key}
                             name={name}

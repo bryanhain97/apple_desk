@@ -1,0 +1,38 @@
+
+.schreibtisch_container
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    max-width: 100%
+    max-height: 100%
+    display: flex
+    flex-direction: column
+    .title
+        margin: 0
+        color: #5a5a5a
+        text-transform: uppercase
+        margin: 10px
+        letter-spacing: 1px
+    .projects
+        width: 100%
+        height: 100%
+        display: flex
+        flex-direction: column
+        overflow-y: scroll
+        &::-webkit-scrollbar
+            display: none
+            -ms-overflow-style: none
+        .project
+            display: flex
+            width: 95%
+            margin: 10px auto
+            &:not(:first-child)
+                margin-top: 0px
+            min-height: 230px
+            .project_image,
+            .project_text
+                flex: 1
+            .project_text
+                margin: 0
