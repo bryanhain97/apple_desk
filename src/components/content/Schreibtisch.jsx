@@ -7,7 +7,7 @@ import portfolio from '../../img/portfolio.png'
 const Content = () => {
     return (
         <div className="schreibtisch_container">
-            <h2 className="title">projects</h2>
+            <h2 className="title">example projects</h2>
             <div className="projects">
                 <Project
                     imageSrc={rtfFish}
@@ -32,12 +32,9 @@ const Content = () => {
                     alt='portfolio'
                     title='Portfolio Website'
                     href='https://www.thatguybryan.com/'
-                    website='thatguybryan.com'
+                    website='www.thatguybryan.com'
                 >
                     My personal portfolio website, which is still in development. Technologies i used to create this website include React, Three.js and Blender.
-                </Project>
-                <Project>
-                    project2 text
                 </Project>
             </div>
         </div>

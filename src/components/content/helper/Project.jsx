@@ -20,7 +20,7 @@ const Project = ({
             />
             <p className="project_text">
                 <h4>{title}
-                    <a className='project_website' href={href}>{website}</a>
+                    <a className='project_website' href={href} target='_blank' rel="noreferrer">{website}</a>
                 </h4>
                 {children}
             </p>

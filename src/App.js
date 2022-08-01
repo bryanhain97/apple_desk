@@ -4,10 +4,12 @@ import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ImFinder } from 'react-icons/im'
 import Dock from './components/Dock'
+import Login from './components/Login'
 
 
 function App() {
-  const [open, setOpen] = useState(true)
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [open, setOpen] = useState(false)
   const buttonRef = useRef(null)
   const buttonText = useRef(null)
   const finderIcon = document.querySelector('.button_tab_icon')
@@ -30,21 +32,26 @@ function App() {
     finderIcon?.classList.toggle('clicked')
     buttonText.current.classList.toggle('clicked')
   }
-
   return (
     <div className="App">
-      <motion.div
-        variants={variants}
-        animate={open ? 'tabOpen' : 'tabClosed'}
-        transition={{ duration: 0.5 }}
-      >
-        <Tab setOpen={setOpen} open={open} />
-      </motion.div>
-      <button className='button_tab' ref={buttonRef} onClick={toggleClicked} onDoubleClick={toggleProgram}>
-        <ImFinder className='button_tab_icon' />
-        <span className='button_tab_text' ref={buttonText}>Finder</span>
-      </button>
-      <Dock />
+      <Login setLoggedIn={setLoggedIn} />
+      {
+        loggedIn &&
+        <>
+          <motion.div
+            variants={variants}
+            animate={open ? 'tabOpen' : 'tabClosed'}
+            transition={{ duration: 0.5 }}
+          >
+            <Tab setOpen={setOpen} open={open} />
+          </motion.div>
+          <button className='button_tab' ref={buttonRef} onClick={toggleClicked} onDoubleClick={toggleProgram}>
+            <ImFinder className='button_tab_icon' />
+            <span className='button_tab_text' ref={buttonText}>Finder</span>
+          </button>
+          <Dock />
+        </>
+      }
     </div >
   )
 }
