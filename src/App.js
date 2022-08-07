@@ -1,8 +1,9 @@
-import './index.sass';
-import Tab from './components/Tab'
 import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ImFinder } from 'react-icons/im'
+import './index.sass';
+
+import Tab from './components/Tab'
 import Dock from './components/Dock'
 import Login from './components/Login'
 
@@ -10,6 +11,7 @@ import Login from './components/Login'
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [open, setOpen] = useState(false)
+
   const buttonRef = useRef(null)
   const buttonText = useRef(null)
   const finderIcon = document.querySelector('.button_tab_icon')
@@ -32,6 +34,7 @@ function App() {
     finderIcon?.classList.toggle('clicked')
     buttonText.current.classList.toggle('clicked')
   }
+
   return (
     <div className="App">
       <Login setLoggedIn={setLoggedIn} />
