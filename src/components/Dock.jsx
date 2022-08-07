@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import ContentItem from '../components/content/helper/ProgrammeItem'
 import { motion } from 'framer-motion'
 import {
@@ -23,20 +23,19 @@ import {
 
 const Dock = () => {
     const [mousePosition, setMousePos] = useState({ y: null })
-    window.addEventListener('mousemove', e => {
-        setMousePos({
-            y: e.clientY / window.innerHeight
-        })
-    })
-    const variants = {
-        show: { y: 0 },
-        hide: { y: 100 }
-    }
+    const updateMousePos = useCallback(e => {
+        setMousePos({ y: e.clientY / window.innerHeight })
+    }, [setMousePos])
+
+    useEffect(() => {
+        window.addEventListener('mousemove', updateMousePos)
+        return () => window.removeEventListener('mousemove', updateMousePos)
+    }, [updateMousePos])
+
     return (
         <motion.div
             className="dock_container"
-            variants={variants}
-            animate={mousePosition.y >= 0.9 ? 'show' : 'hide'}
+            animate={mousePosition.y >= 0.9 ? { y: -100 } : null}
             transition={{ duration: 0.3, delay: 0.2 }}
         >
             <div className="dock_programme">
