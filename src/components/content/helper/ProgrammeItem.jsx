@@ -2,7 +2,7 @@ import React, { useContext, useRef } from 'react'
 import { ContentContext } from '../Programme'
 import { motion } from 'framer-motion'
 
-const Content = ({ children, title, url, experience }) => {
+const Content = ({ children, title, url, experience, dragItem = true}) => {
     const current = useContext(ContentContext)
     const tooltipRef = useRef(null)
 
@@ -13,21 +13,23 @@ const Content = ({ children, title, url, experience }) => {
         window.open(url)
     }
     const clickProgram = (e) => {
-        const gridItems = [...current.current.children]
-        const textNodes = gridItems.map(gridItem => gridItem.children[1])
-        const textNode = e.currentTarget.children[1]
-        textNodes.forEach(currNode => {
-            if (currNode?.textContent !== textNode?.textContent) {
-                currNode.classList.remove('clicked')
-            }
-        })
-        textNode.classList.toggle('clicked')
+        const gridItems = current ? [...current.current.children] : null
+        if (gridItems) {
+            const textNodes = gridItems?.map(gridItem => gridItem.children[1])
+            const textNode = e.currentTarget.children[1]
+            textNodes.forEach(currNode => {
+                if (currNode?.textContent !== textNode?.textContent) {
+                    currNode.classList.remove('clicked')
+                }
+            })
+            textNode.classList.toggle('clicked')
+        }
     }
     const showTooltip = () => tooltipRef.current.classList.add('show')
     const hideTooltip = () => tooltipRef.current.classList.remove('show')
     return (
         <motion.div
-            drag
+            drag={dragItem}
             dragMomentum={false}
             dragConstraints={{ left: -10, right: 10, top: 10, bottom: -10 }}
             className="content_item"

@@ -10,7 +10,6 @@ startUpSound.playbackRate = 1
 
 const Login = ({ setLoggedIn }) => {
     const loginRef = useRef(null)
-    console.dir(startUpSound)
 
     const logIn = () => {
         const hideLogin = new Promise((resolve) => {
