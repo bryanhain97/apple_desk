@@ -17,7 +17,7 @@ function App() {
   const finderIcon = document.querySelector('.button_tab_icon')
   const variants = {
     tabOpen: { opacity: [0, 0, 0, 1], scale: [0.8, 1] },
-    tabClosed: { opacity: [1, 1, 1, 1, 1, 0], scale: 1 },
+    tabClosed: { opacity: [1, 1, 1, 0] },
   }
 
   const toggleProgram = () => {

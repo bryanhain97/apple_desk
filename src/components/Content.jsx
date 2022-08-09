@@ -17,8 +17,8 @@ const renderSwitch = (content) => {
             )
         case "Schreibtisch":
             return <Schreibtisch />
-        case "Dokumente":
-            return
+        // case "Dokumente":
+        //     return
         case "Downloads":
             return (
                 <Downloads />

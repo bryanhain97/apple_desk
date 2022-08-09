@@ -58,22 +58,16 @@ const Dock = () => {
                     <SiBlender className='content_icon blender_icon' />
                 </ContentItem>
                 <ContentItem
-                    title='HTML'
-                    url='https://html.com/'
-                >
-                    <SiHtml5 className='content_icon html_icon' />
-                </ContentItem>
-                <ContentItem
-                    title='Discord'
-                    url='https://discord.com/'
-                >
-                    <SiDiscord className='content_icon discord_icon' />
-                </ContentItem>
-                <ContentItem
                     title='CSS'
                     url='https://de.wikipedia.org/wiki/Cascading_Style_Sheets'
                 >
                     <SiCss3 className='content_icon css_icon' />
+                </ContentItem>
+                <ContentItem
+                    title='HTML'
+                    url='https://html.com/'
+                >
+                    <SiHtml5 className='content_icon html_icon' />
                 </ContentItem>
                 <ContentItem
                     title='React'
@@ -82,10 +76,16 @@ const Dock = () => {
                     <SiReact className='content_icon react_icon' />
                 </ContentItem>
                 <ContentItem
-                    title='Jest'
-                    url='https://jestjs.io/'
+                    title='Sass'
+                    url='https://sass-lang.com/'
                 >
-                    <SiJest className='content_icon jest_icon' />
+                    <SiSass className='content_icon sass_icon' />
+                </ContentItem>
+                <ContentItem
+                    title='Jira'
+                    url='https://www.atlassian.com/software/jira'
+                >
+                    <SiJira className='content_icon jira_icon' />
                 </ContentItem>
                 <ContentItem
                     title='Testing Library'
@@ -106,27 +106,27 @@ const Dock = () => {
                     <SiThreedotjs className='content_icon threedotjs_icon' />
                 </ContentItem>
                 <ContentItem
-                    title='Sass'
-                    url='https://sass-lang.com/'
-                >
-                    <SiSass className='content_icon sass_icon' />
-                </ContentItem>
-                <ContentItem
                     title='MongoDB'
                     url='https://www.mongodb.com/' >
                     <SiMongodb className='content_icon mongodb_icon' />
                 </ContentItem>
                 <ContentItem
-                    title='Jira'
-                    url='https://www.atlassian.com/software/jira'
+                    title='Discord'
+                    url='https://discord.com/'
                 >
-                    <SiJira className='content_icon jira_icon' />
+                    <SiDiscord className='content_icon discord_icon' />
                 </ContentItem>
                 <ContentItem
                     title='Python'
                     url='https://www.python.org/'
                 >
                     <SiPython className='content_icon python_icon' />
+                </ContentItem>
+                <ContentItem
+                    title='Jest'
+                    url='https://jestjs.io/'
+                >
+                    <SiJest className='content_icon jest_icon' />
                 </ContentItem>
                 <ContentItem
                     title='NPM'
