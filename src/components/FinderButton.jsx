@@ -8,19 +8,19 @@ const FinderButton = forwardRef(({ setOpen, showText = true }, ref) => {
     const buttonText = useRef(null)
     const finderIcon = document.querySelector('.button_tab_icon')
 
-    const toggleProgram = (e) => {
+    const toggleProgram = () => {
         finderIcon?.classList.remove('clicked')
         buttonText.current.classList.remove('clicked')
-        e.currentTarget.classList.remove('clicked')
-        e.currentTarget.style.cursor = 'progress'
+        buttonRef.current.classList.remove('clicked')
+        buttonRef.current.style.cursor = 'progress'
         setTimeout(() => {
             setOpen(true)
             buttonRef.current.style.cursor = 'default'
         }, 180)
     }
-    const toggleClicked = (e) => {
-        e.currentTarget.classList.toggle('clicked')
-        e.currentTarget.classList.toggle('clicked')
+    const toggleClicked = () => {
+        finderIcon?.classList.toggle('clicked')
+        buttonText.current.classList.toggle('clicked')
     }
     return (
         <button className='button_tab'
