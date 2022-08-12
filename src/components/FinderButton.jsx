@@ -1,9 +1,9 @@
-import React, { forwardRef, useRef } from 'react'
+import React, { useRef, useContext } from 'react'
 import { ImFinder } from 'react-icons/im'
+import { LoginContext } from '../App'
 
-
-const FinderButton = forwardRef(({ setOpen, showText = true }, ref) => {
-
+const FinderButton = ({ showText = true }) => {
+    const { setOpen } = useContext(LoginContext)
     const buttonRef = useRef(null)
     const buttonText = useRef(null)
     const finderIcon = document.querySelector('.button_tab_icon')
@@ -32,6 +32,6 @@ const FinderButton = forwardRef(({ setOpen, showText = true }, ref) => {
             <span className='button_tab_text' ref={buttonText}>{showText && 'Finder'}</span>
         </button>
     )
-})
+}
 
 export default FinderButton

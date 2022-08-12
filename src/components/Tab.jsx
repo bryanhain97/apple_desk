@@ -1,4 +1,4 @@
-import React, { useState, useId, useEffect, useRef } from 'react'
+import React, { useState, useId, useEffect, useRef, useContext } from 'react'
 import { GiCrossedAirFlows } from 'react-icons/gi'
 import { CgDesktop } from 'react-icons/cg'
 import { IoDocumentOutline } from 'react-icons/io5'
@@ -8,10 +8,11 @@ import { MdDownloading, MdOutlineFolderShared } from 'react-icons/md'
 import { motion } from 'framer-motion'
 import Content from './Content'
 import ListItemHeader from './ListItemHeader'
+import { LoginContext } from '../App.js'
 
 
-
-const Tab = ({ setOpen, open }) => {
+const Tab = () => {
+    const { open, setOpen } = useContext(LoginContext)
     const [prevSelected, setPrevSelected] = useState(null)
     const [currentSelected, setCurrentSelected] = useState('Programme')
     const [nextSelected, setNextSelected] = useState(null)

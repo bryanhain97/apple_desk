@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, createContext } from 'react'
 import {
   Tab,
   Dock,
@@ -7,6 +7,8 @@ import {
 } from './components'
 import './index.sass';
 
+export const LoginContext = createContext(null)
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [open, setOpen] = useState(false)
@@ -14,14 +16,16 @@ function App() {
   return (
     <div className="App">
       <Login setLoggedIn={setLoggedIn} />
-      {
-        loggedIn &&
-        <>
-          <FinderButton setOpen={setOpen} />
-          <Tab setOpen={setOpen} open={open} />
-          <Dock setOpen={setOpen} />
-        </>
-      }
+      <LoginContext.Provider value={{ open, setOpen }}>
+        {
+          loggedIn &&
+          <>
+            <FinderButton />
+            <Tab />
+            <Dock />
+          </>
+        }
+      </LoginContext.Provider>
     </div >
   )
 }

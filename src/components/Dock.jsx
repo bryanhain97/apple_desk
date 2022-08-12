@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useContext } from 'react'
 import Programm from '../components/content/helper/ProgrammeItem'
 import { motion } from 'framer-motion'
 import FinderButton from './FinderButton'
+import { LoginContext } from '../App'
 import {
     SiTypescript,
     SiJavascript,
@@ -22,7 +23,8 @@ import {
     SiNodedotjs
 } from 'react-icons/si'
 
-const Dock = ({ setOpen }) => {
+const Dock = () => {
+    const { setOpen } = useContext(LoginContext)
     const [mousePosition, setMousePos] = useState({ y: null })
     const updateMousePos = useCallback(e => {
         setMousePos({ y: e.clientY / window.innerHeight })
