@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import Programm from '../components/content/helper/ProgrammeItem'
 import { motion } from 'framer-motion'
+import FinderButton from './FinderButton'
 import {
     SiTypescript,
     SiJavascript,
@@ -21,7 +22,7 @@ import {
     SiNodedotjs
 } from 'react-icons/si'
 
-const Dock = () => {
+const Dock = ({ setOpen }) => {
     const [mousePosition, setMousePos] = useState({ y: null })
     const updateMousePos = useCallback(e => {
         setMousePos({ y: e.clientY / window.innerHeight })
@@ -157,6 +158,7 @@ const Dock = () => {
                 >
                     <SiNodedotjs className='content_icon nodedotjs_icon' />
                 </Programm>
+                <FinderButton showText={false} setOpen={setOpen} />
             </div>
         </motion.div>
     )

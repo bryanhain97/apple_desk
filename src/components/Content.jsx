@@ -3,7 +3,7 @@ import {
     Programme,
     Downloads,
     Schreibtisch
-} from './content/index'
+} from './content/'
 
 const renderSwitch = (content) => {
     switch (content) {

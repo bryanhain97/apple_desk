@@ -1,13 +1,47 @@
 .dock_container
     position: absolute
     bottom: -100px
-    background-color: #c7cce5e8
+    background-color: #d8ddf2c6
     border-radius: 20px
     padding: 12px
     margin-bottom: 5px
     z-index: 300
     .dock_programme
         display: flex
+        .button_tab
+            margin: 0 25px 0 40px
+            position: relative
+            top: 1px
+            left: 0px
+            transform: scale(0.8)
+            border-radius: 1px solid white
+            border: none
+            background-color: transparent
+            &::before
+                border-radius: 3px
+                position: absolute
+                top: 25px
+                left: 15px
+                content: ''
+                transform: translate(-50%,-50%)
+                width: 63px
+                height: 63px
+                background-color: #eeeeee
+            &::after
+                content: ''
+                position: absolute
+                height: 135%
+                top: 50%
+                left: -175%
+                transform: translateY(-50%)
+                border-left: 1.5px solid #737373
+            .button_tab_icon
+                position: relative
+                transform: scale(5)
+                color: #1659a1
+                z-index: 3
+            .button_tab_text
+                display: none
         .content_item
             transform: scale(0.9)
             margin: 0px 10px
