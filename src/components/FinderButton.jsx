@@ -2,7 +2,7 @@ import React, { useRef, useContext } from 'react'
 import { ImFinder } from 'react-icons/im'
 import { LoginContext } from '../App'
 
-const FinderButton = ({ showText = true }) => {
+const FinderButton = ({ open, showText = true }) => {
     const { setOpen } = useContext(LoginContext)
     const buttonRef = useRef(null)
     const buttonText = useRef(null)
@@ -23,7 +23,7 @@ const FinderButton = ({ showText = true }) => {
         buttonText.current.classList.toggle('clicked')
     }
     return (
-        <button className='button_tab'
+        <button className={`button_tab ${open ? 'opened' : null}`}
             ref={buttonRef}
             onClick={toggleClicked}
             onDoubleClick={toggleProgram}

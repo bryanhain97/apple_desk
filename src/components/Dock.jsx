@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react'
+import React, { useContext } from 'react'
 import Programm from '../components/content/helper/ProgrammeItem'
-import { motion } from 'framer-motion'
 import FinderButton from './FinderButton'
 import { LoginContext } from '../App'
 import {
@@ -24,22 +23,11 @@ import {
 } from 'react-icons/si'
 
 const Dock = () => {
-    const { setOpen } = useContext(LoginContext)
-    const [mousePosition, setMousePos] = useState({ y: null })
-    const updateMousePos = useCallback(e => {
-        setMousePos({ y: e.clientY / window.innerHeight })
-    }, [setMousePos])
-
-    useEffect(() => {
-        window.addEventListener('mousemove', updateMousePos)
-        return () => window.removeEventListener('mousemove', updateMousePos)
-    }, [updateMousePos])
+    const { open, setOpen } = useContext(LoginContext)
 
     return (
-        <motion.div
+        <div
             className="dock_container"
-            animate={mousePosition.y >= 0.9 ? { y: -100 } : null}
-            transition={{ duration: 0.3, delay: 0.2 }}
         >
             <div className="dock_programme">
                 <Programm
@@ -160,9 +148,10 @@ const Dock = () => {
                 >
                     <SiNodedotjs className='content_icon nodedotjs_icon' />
                 </Programm>
-                <FinderButton showText={false} setOpen={setOpen} />
+                <FinderButton showText={false} setOpen={setOpen} open={open} />
+                <span className={`finder_button_dot ${open ? 'opened' : null}`}></span>
             </div>
-        </motion.div>
+        </div>
     )
 }
 

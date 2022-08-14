@@ -1,22 +1,26 @@
 .dock_container
     position: absolute
-    bottom: -100px
-    background-color: #d8ddf2c6
+    bottom: 0px
+    background-color: #e6e9f5bd
     border-radius: 20px
     padding: 12px
     margin-bottom: 5px
     z-index: 300
     .dock_programme
         display: flex
+        & *
+            cursor: pointer
         .button_tab
             margin: 0 25px 0 40px
             position: relative
             top: 1px
             left: 0px
             transform: scale(0.8)
-            border-radius: 1px solid white
             border: none
             background-color: transparent
+            transition: all 0.3s ease
+            &.opened
+                top: -3px
             &::before
                 border-radius: 3px
                 position: absolute
@@ -27,14 +31,6 @@
                 width: 63px
                 height: 63px
                 background-color: #eeeeee
-            &::after
-                content: ''
-                position: absolute
-                height: 135%
-                top: 50%
-                left: -175%
-                transform: translateY(-50%)
-                border-left: 1.5px solid #737373
             .button_tab_icon
                 position: relative
                 transform: scale(5)
@@ -42,18 +38,44 @@
                 z-index: 3
             .button_tab_text
                 display: none
+        .finder_button_dot
+            position: absolute
+            right: 48px
+            bottom: 6px
+            transition: all 0.3s ease
+            opacity: 0
+            &.opened
+                bottom: 7px
+                opacity: 1
+            &::before
+                content: ''
+                position: absolute
+                width: 5px
+                height: 5px
+                border-radius: 50%
+                background-color: #545454
+                left: 50%
+                top: 50%
+                transform: translate(-50%,-50%)
         .content_item
             transform: scale(0.9)
             margin: 0px 10px
             width: 100%
             height: 100%
             position: relative
-            cursor: pointer
             display: flex
             flex-direction: column
             justify-content: center
             align-items: center
             z-index: 11
+            &:last-of-type
+                &::after
+                    content: '' 
+                    position: absolute
+                    left: 135%
+                    bottom: 0px
+                    height: 100%
+                    border: 0.5px solid #545454
             .content_tooltip
                 display: none
             .content_name
